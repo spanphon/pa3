@@ -4,6 +4,19 @@ output: github_document
 
 ## Load libraries and data
 
+```{r, 'setup'}
+min_adj <- function(...) {
+  list(
+    theme_minimal(...),
+    theme(
+      axis.title.y = element_text(size = rel(.9), hjust = 0.95),
+      axis.title.x = element_text(size = rel(.9), hjust = 0.95),
+      panel.grid.major = element_line(colour = 'grey90', size = 0.15),
+      panel.grid.minor = element_line(colour = 'grey90', size = 0.15))
+  )
+}
+```
+
 ```{r, libs, message=F, warning=F}
 library("tidyverse")
 ```
@@ -40,12 +53,12 @@ vowels %>%
     stat_summary(fun.data = mean_cl_boot, geom = "pointrange", color = "grey40", 
                  position = position_dodge(0.5), pch = 21) + 
     scale_fill_viridis_d(option = "C") + 
-    coord_cartesian(ylim = c(0, 1200)) + 
+    coord_cartesian(ylim = c(0, 1300)) + 
     labs(title = "Formant movement", 
          subtitle = "Trajectory length for Spanish/English cardinal vowels", 
          y = "Trajectory length (hz)", x = NULL, 
          caption = "Mean +/- 95% CI") + 
-    theme_minimal()
+    min_adj(base_size = 16)
 
 # -----------------------------------------------------------------------------
 ```
@@ -60,7 +73,8 @@ vowels %>%
   ggplot(., aes(x = vowel, y = f1_cent, fill = language)) + 
     geom_point(position = position_dodge(0.5), alpha = 0.2) + 
     stat_summary(fun.data = mean_cl_boot, geom = "pointrange", 
-                 position = position_dodge(0.5), pch = 21)
+                 position = position_dodge(0.5), pch = 21) + 
+    min_adj(base_size = 16)
 # -----------------------------------------------------------------------------
 ```
 
@@ -74,7 +88,8 @@ vowels %>%
   ggplot(., aes(x = vowel, y = f2_cent, fill = language)) + 
     geom_point(position = position_dodge(0.5), alpha = 0.2) + 
     stat_summary(fun.data = mean_cl_boot, geom = "pointrange", 
-                 position = position_dodge(0.5), pch = 21)
+                 position = position_dodge(0.5), pch = 21) + 
+    min_adj(base_size = 16)
 # -----------------------------------------------------------------------------
 ```
 
@@ -108,7 +123,7 @@ long_trajectories <- vowels %>%
             f2_35 = mean(f2_35), 
             f2_50 = mean(f2_50), 
             f2_65 = mean(f2_65), 
-            f2_80 = mean(f2_80)) %>% 
+            f2_80 = mean(f2_80), .groups = "drop") %>% 
   pivot_longer(
     cols = starts_with("f"), 
     names_to = c(".value", "perc"), 
@@ -125,7 +140,7 @@ long_trajectories %>%
     geom_text(data = end_point, aes(label = vowel), size = 3) + 
     scale_y_reverse() + 
     scale_x_reverse() + 
-    theme_minimal()
+    min_adj(base_size = 16)
 
 # -----------------------------------------------------------------------------
 ```
@@ -140,7 +155,8 @@ long_trajectories %>%
 
 vowel_means <- vowels %>% 
   group_by(vowel, language) %>% 
-  summarize(f1_cent = mean(f1_cent), f2_cent = mean(f2_cent)) %>% 
+  summarize(f1_cent = mean(f1_cent), f2_cent = mean(f2_cent), 
+    .groups = "drop") %>% 
   ungroup() %>% 
   mutate(order = case_when(vowel == "i" ~ 1, vowel == "a" ~ 2, TRUE ~ 3), 
          vowel = forcats::fct_reorder2(vowel, vowel, order)) %>% 
@@ -148,8 +164,8 @@ vowel_means <- vowels %>%
 
 vowels %>% 
   mutate(vowel = forcats::fct_relevel(vowel, "u", "a", "i")) %>% 
-  ggplot(., aes(x = f2_cent, y = f1_cent, color = language, label = vowel)) + 
-    geom_text(size = 3.5, alpha = 0.6, show.legend = F) + 
+  ggplot(., aes(x = f2_cent, y = f1_cent, color = language, label = vowel)) +
+    geom_text(size = 3.5, alpha = 0.6, show.legend = T) + 
     geom_path(data = vowel_means, aes(group = language, lty = language), 
               color = "grey") + 
     geom_text(data = vowel_means, show.legend = F, size = 7) + 
@@ -159,7 +175,7 @@ vowels %>%
     labs(title = "Vowel space comparison", 
          subtitle = "Spectral centroids of English/Spanish cardinal vowels", 
          y = "F1 (hz)", x = "F2 (hz)") + 
-    theme_minimal(base_size = 16)
+    min_adj(base_size = 16)
 
 # -----------------------------------------------------------------------------
 ```

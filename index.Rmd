@@ -12,18 +12,14 @@ output:
 
 # Overview
 
-In this programming assignment you will continue developing techniques for 
-getting data from Praat. 
+In this programming assignment you will continue developing techniques for getting data from Praat. 
 This time you will learn a new method of segmenting sound files. 
-Specifically, you will work with vowel data and do the following:  
-make recordings, segment them, and calculate vowel formant metrics similar to 
-those you have read about in class.
+Specifically, you will work with vowel data and do the following: make recordings, segment them, and calculate vowel formant metrics similar to those you have read about in class. 
 Next, you will analyze and plot the data in R. 
-You will write a reproducible report using `RMarkdown` that will be hosted on 
-`github`. 
+You will write a reproducible report using `RMarkdown` that will be hosted on `github`.
 
-**Assigned**: Week 9 (4/2)
-**Due**: Thursday, 4/9 before 5pm
+**Assigned**: Week 9 (3/28)  
+**Due**: Monday, 4/4 before 10pm
 
 # Instructions
 
@@ -38,8 +34,7 @@ You will write a reproducible report using `RMarkdown` that will be hosted on
 ## Praat
 
 1. Record a new sound object named `stim`. 
-While recording, repeat the following items inside the carrier sentence 
-you see below: 
+While recording, repeat the following items inside the carrier sentence you see below:
 	- English ("x" is the word", ex: 'meet' is the word):[^variation]
 		- /i/: "meet", "beat", "feet", "seat", "heat", "fleet"
 		- /ɑ/: "moss", "bot", "fought", "sought", "caught", "brought"
@@ -50,30 +45,19 @@ you see below:
 		- /u/: "musa", "bulto", "puso", "supo", "fumo", "cura"
 2. Save the sound object `stim` as a .wav file inside of your `stim` directory
 3. Create a textgrid for `stim`: 
-	- The textgrid should contain **three** tiers, an interval tier called 
-	`item`, an interval tier called `vowel`, and a point tier called 
-	`language`.
+	- The textgrid should contain **three** tiers, an interval tier called `item`, an interval tier called `vowel`, and a point tier called `language`.
 	- Select the sound object and corresponding textgrid and click `View & Edit`
-	- Use the `item` interval tier to mark the beginning and end of each item 
-	you recorded (just the target word, leave a bit of time before 
-	and after). 
-	Inside the `item` interval, type the name of the item (no accent marks, no 
-	uppercase, ex: "meet").
-	- Use the `vowel` interval tier to mark the beginning and end of the first 
-	vowel as accurately as possible. 
+	- Use the `item` interval tier to mark the beginning and end of each item you recorded (just the target word, leave a bit of time before and after). 
+	Inside the `item` interval, type the name of the item (no accent marks, no uppercase, ex: "meet").
+	- Use the `vowel` interval tier to mark the beginning and end of the first vowel as accurately as possible. 
 	Use the same strategy for every vowel.[^zerocross] 
-	Inside the `vowel` interval, type the name of the vowel in IPA (use "i", 
-	"a", or "u", no other characters needed, be careful to avoid spaces).
+	Inside the `vowel` interval, type the name of the vowel in IPA (use "i", "a", or "u", no other characters needed, be careful to avoid spaces).
 	- Use the `language` point tier to note the language of the item. 
-	The point you mark for a given item must fall anywhere within the 
-	boundaries of the `item` interval you set for this word. 
+	The point you mark for a given item must fall anywhere within the boundaries of the `item` interval you set for this word. 
 	Type "en" for English words and "sp" for Spanish words.  
-	(Hint: this should take about 15-20 minutes... make use of the hot keys 
-	to zoom in and out, check the "tier" tab at the top of the window for other 
-	options)
+	(Hint: this should take about 15-20 minutes... make use of the hot keys to zoom in and out, check the "tier" tab at the top of the window for other options)
 3. Save the textgrid object as a textfile in the `stim` directory
-4. Extract F1 and F2 spectral centroids and trajectory length using the 
-following praat script:  
+4. Extract F1 and F2 spectral centroids and trajectory length using the following praat script:  
 
 ```r
 # Set up output file ----------------------------------------------------------
@@ -267,8 +251,7 @@ Remove
 ```
 ...otherwise it will not run.
 Copy and paste the code into a new praat script. 
-Save it with the name `extract_vals.praat` inside the `scripts` folder, 
-then fix it so that it runs. 
+Save it with the name `extract_vals.praat` inside the `scripts` folder, then fix it so that it runs. 
 
 7. Respond to the following questions: 
 	a. Examine the portion of the script you see below. 
@@ -285,24 +268,18 @@ per65 = vonset + (durationV * 0.65)
 per80 = vonset + (durationV * 0.80)
 ```
 <br>
-	b. In a few short sentences describe the general outline of the script, 
-	what the purpose is, and how it acheives this purpose (hint: focus on the 
-	section dividers and the comments)
-	c. In a few short sentences describe how the segmenting procedure you used 
-	this week differs from that used in `pa_2`. 
+	b. In a few short sentences describe the general outline of the script, what the purpose is, and how it acheives this purpose (hint: focus on the section dividers and the comments)
+	c. In a few short sentences describe how the segmenting procedure you used this week differs from that used in `pa_2`. 
 	What are the advantages and disadvantages?
 
 <br>
 
 ## R/RStudio
 
-8. Set the output of your .Rmd file to `github_document` (see `pa_1` and 
-`pa_2` if you don't remember).
+8. Set the output of your .Rmd file to `github_document` (see `pa_1` and `pa_2` if you don't remember).
 Make sure it is saved in the root directory of `pa_3`.
-9. Load the necessary packages and read in the `vowel_data.csv` file into R 
-(use an R chunk)
-10. Manipulate the dataframe as necessary so that you can calculate average 
-F1/F2 centroids and trajectory length (include SD). 
+9. Load the necessary packages and read in the `vowel_data.csv` file into R (use an R chunk)
+10. Manipulate the dataframe as necessary so that you can calculate average F1/F2 centroids and trajectory length (include SD). 
 11. Create the following plots: 
 	- trajectory length as a function of vowel and language
 	- F1 as a function of vowel and language
@@ -321,8 +298,7 @@ Make sure your repo is public.
 
 This is programming assignment 3 of 4. 
 It is worth 10 of the 40 possible points. 
-In order to receive full credit you must complete steps 1-13 above, and follow 
-all the instructions.
+In order to receive full credit you must complete steps 1-13 above, and follow all the instructions.
 
 |                 Task                                              | Points |
 | :---------------------------------------------------------------- | -----: |
@@ -348,14 +324,12 @@ all the instructions.
 
 - Remember that Praat and R are picky regarding special characters and 
 capitalized characters.
-Before you contact me (or others) for help, make sure you have followed the 
-instructions to the best of your knowledge. 
+Before you contact me (or others) for help, make sure you have followed the instructions to the best of your knowledge. 
 - You will not be able to finish this project the day it is due. 
 Start early and think about the problems it poses. 
 - [Here](./template.Rmd) is a general template you can use in your .Rmd file. 
 I highly recommend you at least look at it. 
-- If you are segmenting the target items correctly your waveform/textgrid 
-combo should look like this: 
+- If you are segmenting the target items correctly your waveform/textgrid combo should look like this: 
 ![example](./img/ex.png)
 
 </br></br></br>
@@ -364,6 +338,4 @@ combo should look like this:
 [^variation]: Some (most?) of you distinguish between low back vowels, i.e., 
 "cot"/"caught". Don't worry about this for the sake of this assignment. 
 Say the words however you normally pronounce them.
-[^zerocross]: When viewing a spectrogram/textgrid, you can select a portion of 
-the sound file and use the shortcuts `command ,` and `command .` to select the 
-next zero-crossing and the previous zero-crossing, respectively. 
+[^zerocross]: When viewing a spectrogram/textgrid, you can select a portion of the sound file and use the shortcuts `command ,` and `command .` to select the next zero-crossing and the previous zero-crossing, respectively. 
