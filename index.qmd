@@ -1,11 +1,11 @@
 ---
 title: "Programming assignment 3"
-output: 
-  html_document: 
-    number_sections: yes
+format: 
+  html:
     theme: spacelab
-    toc: yes
-    highlight: zenburn
+toc: true
+number-sections: false
+highlight-style: monokai
 ---
 
 **Topics**: Github, Rmarkdown, RStudio projects, Praat
@@ -16,10 +16,10 @@ In this programming assignment you will continue developing techniques for getti
 This time you will learn a new method of segmenting sound files. 
 Specifically, you will work with vowel data and do the following: make recordings, segment them, and calculate vowel formant metrics similar to those you have read about in class. 
 Next, you will analyze and plot the data in R. 
-You will write a reproducible report using `RMarkdown` that will be hosted on `github`.
+You will write a reproducible report using `Quato Markdown` that will be hosted on `github`.
 
-**Assigned**: Week 9 (3/28)  
-**Due**: Monday, 4/4 before 10pm
+**Assigned**: Week 9 (3/25)  
+**Due**: Monday, 4/1 before 10pm
 
 # Instructions
 
@@ -268,7 +268,7 @@ per65 = vonset + (durationV * 0.65)
 per80 = vonset + (durationV * 0.80)
 ```
 <br>
-	b. In a few short sentences describe the general outline of the script, what the purpose is, and how it acheives this purpose (hint: focus on the section dividers and the comments)
+	b. In a few short sentences describe the general outline of the script, what the purpose is, and how it achieves this purpose (hint: focus on the section dividers and the comments)
 	c. In a few short sentences describe how the segmenting procedure you used this week differs from that used in `pa_2`. 
 	What are the advantages and disadvantages?
 
@@ -276,7 +276,7 @@ per80 = vonset + (durationV * 0.80)
 
 ## R/RStudio
 
-8. Set the output of your .Rmd file to `github_document` (see `pa_1` and `pa_2` if you don't remember).
+8. Set the "format" of your .qmd file to `ghd` (e.g., `format: ghd`).
 Make sure it is saved in the root directory of `pa_3`.
 9. Load the necessary packages and read in the `vowel_data.csv` file into R (use an R chunk)
 10. Manipulate the dataframe as necessary so that you can calculate average F1/F2 centroids and trajectory length (include SD). 
@@ -285,7 +285,7 @@ Make sure it is saved in the root directory of `pa_3`.
 	- F1 as a function of vowel and language
 	- F2 as a function of vowel and language
 	- See below for extra challenges
-12. **Make sure to knit your .Rmd file!**
+12. **Make sure to knit your .qmd file!**
 
 ## github
 
@@ -311,7 +311,7 @@ In order to receive full credit you must complete steps 1-13 above, and follow a
 | Plot trajectory length as described                               |      1 |
 | Plot F1 centroids as described                                    |      1 |
 | Plot F2 centroids as described                                    |      1 |
-| Knit the Rmarkdown README file                                    |      1 |
+| Knit the Quarto markdown README file                              |      1 |
 | Create `pa_3` repo                                                |    0.5 |
 | Commit and push to repo, tag me                                   |    0.5 |
 | (Bonus) Plot trajectory length in F1/F2 vowel space               |     +1 |
@@ -323,11 +323,14 @@ In order to receive full credit you must complete steps 1-13 above, and follow a
 # Tips
 
 - Remember that Praat and R are picky regarding special characters and 
-capitalized characters.
+capitalized characters. 
+I say this every week. 
+Listen this time. `r emo::ji("smile")`
 Before you contact me (or others) for help, make sure you have followed the instructions to the best of your knowledge. 
-- You will not be able to finish this project the day it is due. 
+If/when you ask for help, describe what you are trying to achieve, the steps you have already taken, the error you are getting, and the desired output. 
+- You will **not** be able to finish this project the day it is due. 
 Start early and think about the problems it poses. 
-- [Here](./template.Rmd) is a general template you can use in your .Rmd file. 
+- [Here](./template.qmd) is a general template you can use in your .qmd file. 
 I highly recommend you at least look at it. 
 - If you are segmenting the target items correctly your waveform/textgrid combo should look like this: 
 ![example](./img/ex.png)
@@ -335,7 +338,5 @@ I highly recommend you at least look at it.
 </br></br></br>
 
 
-[^variation]: Some (most?) of you distinguish between low back vowels, i.e., 
-"cot"/"caught". Don't worry about this for the sake of this assignment. 
-Say the words however you normally pronounce them.
+[^variation]: Some (most?) of you distinguish between low back vowels, i.e., "cot"/"caught". Don't worry about this for the sake of this assignment. Say the words however you normally pronounce them.
 [^zerocross]: When viewing a spectrogram/textgrid, you can select a portion of the sound file and use the shortcuts `command ,` and `command .` to select the next zero-crossing and the previous zero-crossing, respectively. 
