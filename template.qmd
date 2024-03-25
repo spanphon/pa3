@@ -1,5 +1,5 @@
 ---
-title: "Programming assignment 2 - template"
+title: "Programming assignment 3 - template"
 format: gfm
 date: last-modified
 date-format: iso

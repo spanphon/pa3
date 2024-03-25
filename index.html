@@ -373,7 +373,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="rrstudio" class="level2">
 <h2 class="anchored" data-anchor-id="rrstudio">R/RStudio</h2>
 <ol start="8" type="1">
-<li>Set the “format” of your .qmd file to <code>ghd</code> (e.g., <code>format: ghd</code>). Make sure it is saved in the root directory of <code>pa_3</code>.</li>
+<li>Set the “format” of your .qmd file to <code>ghd</code> (e.g., <code>format: ghd</code>). Make sure it is saved in the root directory of <code>pa_3</code>. The YAML front matter could look something like this:<br>
+</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"Programming assignment 3"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span> gfm</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>date<span class="sc">:</span> last<span class="sc">-</span>modified</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>date<span class="sc">-</span>format<span class="sc">:</span> iso</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="9" type="1">
 <li>Load the necessary packages and read in the <code>vowel_data.csv</code> file into R (use an R chunk)</li>
 <li>Manipulate the dataframe as necessary so that you can calculate average F1/F2 centroids and trajectory length (include SD).</li>
 <li>Create the following plots:
