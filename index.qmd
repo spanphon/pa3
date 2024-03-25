@@ -325,7 +325,7 @@ In order to receive full credit you must complete steps 1-13 above, and follow a
 - Remember that Praat and R are picky regarding special characters and 
 capitalized characters. 
 I say this every week. 
-Listen this time. `r emo::ji("smile")`
+Listen this time. 😄
 Before you contact me (or others) for help, make sure you have followed the instructions to the best of your knowledge. 
 If/when you ask for help, describe what you are trying to achieve, the steps you have already taken, the error you are getting, and the desired output. 
 - You will **not** be able to finish this project the day it is due. 
