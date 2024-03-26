@@ -1,8 +1,12 @@
-
+---
+format: gfm
+---
 
 ## Load libraries and data
 
-``` r
+```{r}
+#| label: setup
+
 min_adj <- function(...) {
   list(
     theme_minimal(...),
@@ -15,26 +19,25 @@ min_adj <- function(...) {
 }
 ```
 
-``` r
+```{r}
+#| label: libs
+#| message: false
+#| warning: false
+
 library("tidyverse")
 ```
 
-``` r
+```{r}
+#| label: load-data
 vowels <- read_csv("./data/vowel_data.csv")
 ```
 
-    Rows: 36 Columns: 17
-    ── Column specification ────────────────────────────────────────────────────────
-    Delimiter: ","
-    chr  (4): id, item, vowel, language
-    dbl (13): f1_cent, f2_cent, tl, f1_20, f1_35, f1_50, f1_65, f1_80, f2_20, f2...
 
-    ℹ Use `spec()` to retrieve the full column specification for this data.
-    ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 
 ## Descriptive statistics
 
-``` r
+```{r}
+#| label: descriptives
 # Calculate means and standard deviations of your English/Spanish vowels ------
 vowels |> 
   group_by(vowel, language) |> 
@@ -52,22 +55,14 @@ vowels |>
   knitr::kable(format = "html")
 ```
 
-<div>
-
-| vowel | language | f1             | f2               |
-|:------|:---------|:---------------|:-----------------|
-| a     | en       | 688.71 (82.89) | 1174.28 (46.29)  |
-| a     | sp       | 730.23 (27.37) | 1382.37 (78.55)  |
-| i     | en       | 252.28 (18.56) | 1771.66 (149.25) |
-| i     | sp       | 291.06 (45.59) | 2259.69 (137.41) |
-| u     | en       | 342.52 (22.93) | 1226.27 (233.17) |
-| u     | sp       | 329.48 (18.68) | 746.75 (84.26)   |
-
-</div>
 
 ## Plots
 
-``` r
+```{r}
+#| label: plot1
+#| dpi: 300
+#| fig-asp: 0.56
+#| out-width: "100%"
 # 1. Plot trajectory length as a function of vowel and language ---------------
 vowels |> 
   ggplot() +
@@ -87,10 +82,15 @@ vowels |>
   min_adj(base_size = 16)
 ```
 
-<img src="README_files/figure-commonmark/plot1-1.png"
-style="width:100.0%" />
 
-``` r
+
+
+
+```{r}
+#| label: plot2
+#| dpi: 300
+#| fig-asp: 0.56
+#| out-width: "100%"
 # 2. Plot F1 as a function of vowel and language ------------------------------
 vowels |> 
   ggplot() + 
@@ -101,10 +101,15 @@ vowels |>
   min_adj(base_size = 16)
 ```
 
-<img src="README_files/figure-commonmark/plot2-1.png"
-style="width:100.0%" />
 
-``` r
+
+
+
+```{r}
+#| label: plot3
+#| dpi: 300
+#| fig-asp: 0.56
+#| out-width: "100%"
 # 3. Plot F2 as a function of vowel and language ------------------------------
 vowels |> 
   ggplot() +
@@ -115,12 +120,19 @@ vowels |>
   min_adj(base_size = 16)
 ```
 
-<img src="README_files/figure-commonmark/plot3-1.png"
-style="width:100.0%" />
+
+
+
+
+
 
 ## Challenge (bonus points)
 
-``` r
+```{r}
+#| label: plot4
+#| dpi: 300
+#| fig-asp: 0.56
+#| out-width: "100%"
 # Plot trajectory length in the F1/F2 vowel space -----------------------------
 
 #
@@ -164,12 +176,16 @@ long_trajectories |>
   min_adj(base_size = 16)
 ```
 
-<img src="README_files/figure-commonmark/plot4-1.png"
-style="width:100.0%" />
+
+
 
 ## FREEBIE
 
-``` r
+```{r}
+#| label: plot5
+#| dpi: 300
+#| out-width: "100%"
+#| fig-asp: 0.56
 # Plot both vowel spaces together ---------------------------------------------
 
 vowel_means <- vowels |> 
@@ -201,6 +217,3 @@ vowels |>
   ) + 
   min_adj(base_size = 16)
 ```
-
-<img src="README_files/figure-commonmark/plot5-1.png"
-style="width:100.0%" />
