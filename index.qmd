@@ -18,8 +18,8 @@ Specifically, you will work with vowel data and do the following: make recording
 Next, you will analyze and plot the data in R. 
 You will write a reproducible report using `Quato Markdown` that will be hosted on `github`.
 
-**Assigned**: Week 9 (3/25)  
-**Due**: Monday, 4/1 before 10pm
+**Assigned**: Week 9 (10/30)  
+**Due**: Thursday, 11/6 before 10pm
 
 # Instructions
 
@@ -343,6 +343,8 @@ Start early and think about the problems it poses.
 I highly recommend you at least look at it. 
 - If you are segmenting the target items correctly your waveform/textgrid combo should look like this: 
 ![example](./img/ex.png)
+- I don't think anybody reads these tips. 
+If you read this, don't say anything to anybody else and send me an email with your favorite meme. 
 
 </br></br></br>
 
